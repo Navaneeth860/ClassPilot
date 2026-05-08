@@ -78,26 +78,39 @@ The project converts attendance data into clear, actionable predictions using de
 
 ```bash
 class-pilot/
+├── dist/
+│   ├── assets/
+│   └── index.html
+│
+├── node_modules/
+│
 ├── src/
 │   ├── components/
-│   │   ├── Dashboard.jsx
-│   │   ├── TimetableEditor.jsx
 │   │   ├── AttendanceInput.jsx
 │   │   ├── CalendarView.jsx
-│   │   └── EventManager.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── EventManager.jsx
+│   │   └── TimetableEditor.jsx
 │   │
 │   ├── contexts/
 │   │   └── DataContext.jsx
 │   │
 │   ├── utils/
-│   │   └── calculations.js
+│   │   ├── calculations.js
+│   │   └── storage.js
 │   │
 │   ├── App.jsx
-│   └── index.css
+│   ├── index.css
+│   └── main.jsx
 │
-├── public/
+├── .gitignore
+├── index.html
+├── package-lock.json
 ├── package.json
-└── README.md
+├── postcss.config.js
+├── README.md
+├── tailwind.config.js
+└── vite.config.js
 ```
 
 > Business logic is centralized inside `calculations.js` using pure utility functions to keep components modular and maintainable.
