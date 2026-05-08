@@ -1,9 +1,13 @@
+
 {
   "name": "classpilot",
+  "homepage": "https://navaneeth860.github.io/ClassPilot/",
   "version": "1.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "build": "vite build",
     "preview": "vite preview"
   },
