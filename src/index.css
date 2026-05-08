@@ -1,0 +1,245 @@
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=DM+Mono:wght@400;500&display=swap');
+
+/* ─── Design tokens ─────────────────────────────────────────── */
+:root {
+  --bg-base:      #0d0f12;
+  --bg-surface:   #131619;
+  --bg-elevated:  #1a1d22;
+  --bg-hover:     #1f2329;
+
+  --border:       #252930;
+  --border-subtle:#1c1f24;
+
+  --text-primary:   #e8eaed;
+  --text-secondary: #8b9099;
+  --text-muted:     #555b66;
+
+  --accent:       #3b82f6;
+  --accent-dim:   rgba(59,130,246,0.12);
+  --accent-hover: #2563eb;
+
+  --safe:         #22c55e;
+  --safe-dim:     rgba(34,197,94,0.10);
+  --warning:      #f59e0b;
+  --warning-dim:  rgba(245,158,11,0.10);
+  --critical:     #ef4444;
+  --critical-dim: rgba(239,68,68,0.10);
+
+  --radius-sm:  6px;
+  --radius-md:  10px;
+  --radius-lg:  14px;
+  --radius-xl:  18px;
+
+  --font-ui:   'DM Sans', sans-serif;
+  --font-mono: 'DM Mono', monospace;
+
+  --shadow-sm: 0 1px 3px rgba(0,0,0,0.4);
+  --shadow-md: 0 4px 12px rgba(0,0,0,0.5);
+}
+
+/* ─── Reset ──────────────────────────────────────────────────── */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: var(--font-ui);
+  background-color: var(--bg-base);
+  color: var(--text-primary);
+  font-size: 14px;
+  line-height: 1.5;
+}
+
+/* ─── Scrollbar ──────────────────────────────────────────────── */
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb { background: var(--border); border-radius: 4px; }
+::-webkit-scrollbar-thumb:hover { background: #363b45; }
+
+/* ─── Typography scale ───────────────────────────────────────── */
+.t-display  { font-size: 22px; font-weight: 600; letter-spacing: -0.02em; color: var(--text-primary); }
+.t-title    { font-size: 16px; font-weight: 600; letter-spacing: -0.01em; color: var(--text-primary); }
+.t-label    { font-size: 12px; font-weight: 500; letter-spacing: 0.04em;  color: var(--text-secondary); text-transform: uppercase; }
+.t-body     { font-size: 14px; font-weight: 400; color: var(--text-secondary); }
+.t-mono     { font-family: var(--font-mono); font-size: 13px; }
+.t-stat     { font-family: var(--font-mono); font-size: 22px; font-weight: 500; color: var(--text-primary); letter-spacing: -0.02em; }
+
+/* ─── Surface / Card ──────────────────────────────────────────── */
+.cp-card {
+  background: var(--bg-surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-xl);
+  transition: border-color 0.15s ease;
+}
+.cp-card:hover { border-color: #2e333c; }
+
+.cp-card-elevated {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+}
+
+/* ─── Buttons ─────────────────────────────────────────────────── */
+.cp-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: var(--accent);
+  color: #fff;
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
+  border: none;
+  cursor: pointer;
+  transition: background 0.15s ease, transform 0.1s ease;
+  letter-spacing: 0.01em;
+}
+.cp-btn-primary:hover  { background: var(--accent-hover); }
+.cp-btn-primary:active { transform: scale(0.98); }
+
+.cp-btn-ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease, border-color 0.15s ease;
+}
+.cp-btn-ghost:hover { background: var(--bg-hover); color: var(--text-primary); border-color: #2e333c; }
+
+.cp-btn-danger {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  background: transparent;
+  color: var(--critical);
+  font-family: var(--font-ui);
+  font-size: 13px;
+  font-weight: 500;
+  padding: 7px 14px;
+  border-radius: var(--radius-md);
+  border: 1px solid rgba(239,68,68,0.2);
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.cp-btn-danger:hover { background: var(--critical-dim); border-color: rgba(239,68,68,0.35); }
+
+/* ─── Badge / Pill ────────────────────────────────────────────── */
+.cp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  font-size: 11px;
+  font-weight: 500;
+  padding: 3px 8px;
+  border-radius: 20px;
+  letter-spacing: 0.02em;
+}
+.cp-badge-safe     { background: var(--safe-dim);     color: var(--safe);     border: 1px solid rgba(34,197,94,0.2); }
+.cp-badge-warning  { background: var(--warning-dim);  color: var(--warning);  border: 1px solid rgba(245,158,11,0.2); }
+.cp-badge-critical { background: var(--critical-dim); color: var(--critical); border: 1px solid rgba(239,68,68,0.2); }
+
+/* ─── Progress bar ────────────────────────────────────────────── */
+.cp-progress-track {
+  width: 100%;
+  height: 3px;
+  background: var(--border);
+  border-radius: 99px;
+  overflow: hidden;
+}
+.cp-progress-fill {
+  height: 100%;
+  border-radius: 99px;
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.cp-progress-safe     { background: var(--safe); }
+.cp-progress-warning  { background: var(--warning); }
+.cp-progress-critical { background: var(--critical); }
+
+/* ─── Stat chip ───────────────────────────────────────────────── */
+.cp-stat-chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: var(--bg-elevated);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  padding: 8px 14px;
+}
+
+/* ─── Sidebar nav item ────────────────────────────────────────── */
+.cp-nav-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 8px 12px;
+  border-radius: var(--radius-md);
+  font-size: 13.5px;
+  font-weight: 450;
+  color: var(--text-secondary);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  transition: background 0.12s ease, color 0.12s ease;
+  text-align: left;
+  letter-spacing: 0.005em;
+}
+.cp-nav-item:hover      { background: var(--bg-hover); color: var(--text-primary); }
+.cp-nav-item.active     { background: var(--accent-dim); color: var(--accent); }
+.cp-nav-item.active svg { color: var(--accent); }
+
+/* ─── Section divider ─────────────────────────────────────────── */
+.cp-divider {
+  height: 1px;
+  background: var(--border-subtle);
+  border: none;
+}
+
+/* ─── Insight box ─────────────────────────────────────────────── */
+.cp-insight {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--radius-md);
+  padding: 10px 12px;
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+}
+
+/* ─── Animations ──────────────────────────────────────────────── */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(6px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.animate-in {
+  animation: fadeInUp 0.22s ease both;
+}
+
+/* ─── Utility overrides ───────────────────────────────────────── */
+.font-mono { font-family: var(--font-mono) !important; }
