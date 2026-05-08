@@ -16,6 +16,7 @@ import {
   calculateTotalActivityPoints,
   getUpcomingEvents,
 } from '../utils/calculations';
+import SubjectManager from './SubjectManager';
 
 // ─── Helpers ──────────────────────────────────────────────────────────────────
 const riskMeta = {
@@ -312,6 +313,7 @@ const Dashboard = () => {
 
         {/* Right: sidebar panels */}
         <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+          <SubjectManager />
           <OverallStatusCard stats={overallStats} />
           <UpcomingEventsCard events={upcomingEvents} />
         </div>
