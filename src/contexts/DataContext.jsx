@@ -23,6 +23,7 @@ const TIME_SLOTS = [
   '1:00 PM - 2:00 PM',
   '2:00 PM - 3:00 PM',
   '3:00 PM - 4:00 PM',
+  '4:00 PM - 5:00 PM',
 ];
 
 const DEFAULT_TIMETABLE = {};
@@ -44,6 +45,16 @@ DEFAULT_SUBJECTS.forEach(subject => {
   INITIAL_STATE.attendance[subject.id] = [];
 });
 
+// Helper to extend timetable to current TIME_SLOTS length
+const extendTimetable = (timetable) => {
+  const extended = {};
+  DAYS.forEach(day => {
+    const current = timetable[day] || [];
+    extended[day] = [...current, ...Array(Math.max(0, TIME_SLOTS.length - current.length)).fill(null)];
+  });
+  return extended;
+};
+
 export const DataProvider = ({ children }) => {
   const [state, setState] = useState(INITIAL_STATE);
   const [isLoaded, setIsLoaded] = useState(false);
@@ -52,6 +63,8 @@ export const DataProvider = ({ children }) => {
   useEffect(() => {
     const savedState = loadFromStorage();
     if (savedState) {
+      // Extend timetable to match current TIME_SLOTS
+      savedState.timetable = extendTimetable(savedState.timetable);
       setState(savedState);
     }
     setIsLoaded(true);
